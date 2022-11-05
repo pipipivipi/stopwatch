@@ -13,7 +13,7 @@ function displayTime(){
   const h =String(currentTime.getHours()-9).padStart(1, '0');
   const m =String(currentTime.getMinutes()).padStart(1, '0');
   const s =String(currentTime.getSeconds()).padStart(1, '0');
-  const ms =String(currentTime.getMilliseconds()).padStart(1,'0') .slice(0,1);
+  const ms =String(currentTime.getMilliseconds()).padStart(3,'0').slice(0,1);
 
   time.textContent = `${h}:${m}:${s}:${ms}`;
   timeoutID = setTimeout(displayTime, 10);
@@ -46,5 +46,7 @@ resetButton.addEventListener('click',function() {
   resetButton.disabled = true;
   time.textContent = '0:0:0:0';
   stopTime = 0;
+  clearTimeout(timeoutID)
+
 }
 );
